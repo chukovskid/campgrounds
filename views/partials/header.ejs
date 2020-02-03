@@ -1,0 +1,72 @@
+<!CONNECT html>
+<html>
+
+<head>
+
+	<title> Chukovski's Camp site </title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" herf="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+	<link rel="stylesheet" href="/stylesheets/main.css">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/campground">Campgrounds</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<% if(!currentUser){ %>
+					<li><a href="/login">LogIn</a></li>
+					<li><a href="/register">SineUp</a></li>
+					<% } else{ %>
+					<li><a>Sined up as: <%= currentUser.username %> </a></li>
+					<li><a href="/logout">LogOut</a></li>
+					<% } %>
+				</ul>
+				 <h6>
+			 <form action=" /campground" method="GET" class="form-inline botom-left">
+					 <div class="form-group ">
+						  <input type="text" name="search" placeholder="Search for a Campground" class="form-control" >
+					 </div>
+			 </form> 
+				</h6>
+				 
+			
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	
+	
+	<div class="container">
+	
+	 <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">  <%= error %>  </div>
+        <% } %>
+		
+ <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+		
+	</div>
+		
+
